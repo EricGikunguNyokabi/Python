@@ -1,0 +1,68 @@
+FILE METHODS
+1)READ
+        read: This method is used to read the contents of a file. By default, the read method reads the entire contents of the file and returns it as a string. If a number is passed as an argument to the read method, it reads that many characters from the file and returns them as a string.
+2)WRITE
+        write: This method is used to write to a file. The argument passed to the write method is written to the file as a string. If the file was opened in write mode ("w"), the contents of the file will be truncated and the new data will be written to the file. If the file was opened in append mode ("a"), the new data will be appended to the end of the file.
+3)APPEND
+4)SEEK()
+        seek: This method is used to change the file pointer's position. The argument passed to the seek method is the number of bytes to move the file pointer. The seek method takes two optional arguments: the first argument is the number of bytes to move the file pointer, and the second argument is the starting point from where the file pointer should be moved. The starting point can be one of the following: 0 (the beginning of the file), 1 (the current position of the file pointer), or 2 (the end of the file).
+5)TELL()
+        tell: This method is used to return the current position of ... method is used to return the current position of... the file object's read/write pointer within the file
+
+PARAMETER:FILE
+        file_object = open(filename, mode) #mode file
+        file_object = open("example.txt", "r") #methon, read
+        file_object.close() #closing
+
+PARAMETER: MODE 
+        a)Read("r")
+        b)Append("a")
+        c)Write("w")
+        d)Create("x")
+        e)Text Mode("t")
+        f)Binary Mode("b")
+
+I know you might be asking: what type of value is returned by open()?
+Well, a file object.
+Let's talk a little bit about them.
+
+FILE OBJECTS
+        According to the Python Documentation, a file object is:
+        An object exposing a file-oriented API (with methods such as read() or write()) to an underlying resource.
+        This is basically telling us that a file object is an object that lets us work and interact with existing files in our Python program.
+            File objects have attributes, such as:
+                name: the name of the file. #print(f.name) 
+                closed: True if the file is closed. False otherwise. #print(f.closed) 
+                mode: the mode used to open the file. #print(f.mode) 
+
+METHODS TO READ A FILE
+Read()
+        read(), which returns the entire content of the file as a string.
+    example
+        file_object = open(filename, mode) 
+                            filename is the name of the file you want to read.
+                            mode is the mode in which you want to open the file (e.g., 'r' for read mode).
+        file_contents = file_objects.read()
+                        file_object is the file object that represents the file.
+        file_object.close()
+                        file_contents is the string that contains the entire contents of the file.
+
+    example
+        file_object = open("example.txt", "r") 
+        file_contents = file_objects.read()
+        file_object.close()
+        print(file_contents)
+
+You can use the type() function to confirm that the value returned by f.read() is a string:
+example
+    f = open("example.txt", "r")
+    file_contents = f.read()
+    f.close()
+    print(type(file_contents))
+❗️Important: You need to close a file after the task has been completed to free the resources associated to the file. To do this, you need to call the close() method
+
+Readline() vs. Readlines()
+    You can read a file line by line with these two methods. They are slightly different, so let's see them in detail.
+    readline() reads one line of the file until it reaches the end of that line. A trailing newline character (\n) is kept in the string.
+    💡 Tip: Optionally, you can pass the size, the maximum number of characters that you want to include in the resulting string.
+    In contrast, readlines() returns a list with all the lines of the file as individual elements (strings). 
